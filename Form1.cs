@@ -8,15 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
-using HtmlAgilityPack;
-using System.Net;
-using System.IO;
+
 
 /*
  * 
  * Will focus on getting DOM updates after JS scripts run on webpage
- * 
- * 
+ *  
  */
 
 namespace UMBC_Laundry
@@ -92,10 +89,6 @@ namespace UMBC_Laundry
         async void GetLaundryData(string url)
         {
             var html = await client.GetStringAsync(url);
-            var htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            htmlDoc.LoadHtml(html);
-
-            richTextBox1.AppendText("Wiat!\n");
         }
 
         // Load laundry info every time we change rooms 
