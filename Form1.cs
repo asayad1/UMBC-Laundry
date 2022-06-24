@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
 using HtmlAgilityPack;
+using System.Net;
+using System.IO;
 
 /*
  * 
@@ -17,14 +19,15 @@ using HtmlAgilityPack;
  * 
  */
 
-
-
 namespace UMBC_Laundry
 {
     public partial class Form1 : Form
     {
         HttpClient client = new HttpClient();
         string UMBC_ID = "https://www.laundryview.com/home/5803/48410";
+        string API_KEY = "td8ExBj5mtf-";
+
+        /*
         IDictionary<string, string> rooms = new Dictionary<string, string>()
         {
             {"Chesapeake Hall 58A", "3"},
@@ -43,19 +46,47 @@ namespace UMBC_Laundry
             {"Susquehanna Hall 18", "23"},
             {"Susquehanna Hall 71", "22"}
         };
+        */
 
         public Form1()
         {
             InitializeComponent();
+
+            // Load rooms once 
+            
             LoadRooms();
+
+
+
         }
 
         void LoadRooms()
         {
-            foreach (string room in rooms.Keys)
+            // Post request to start project task 
+            string url = "https://www.parsehub.com/api/v2/projects/tpRJpjCBPSBg/run";
+            WebRequest request = WebRequest.Create(url);
+            request.Method = "POST";
+            request.ContentType = "application/json";
+            request.Credentials = new NetworkCredential("email", "password");
+
+            string postData = "{\"api_key\":\"" + API_KEY + "\"";
+            using (var sw = new StreamWriter(request.GetRequestStream()))
             {
-                roomList.Items.Add(room);   
+                sw.Write(postData);
+                sw.Flush();
+                sw.Close();
+
+                var response = (HttpWebResponse)request.GetResponse();
+
+                using (var sr = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = sr.ReadToEnd();
+
+                    richTextBox1.AppendText(result);
+                }
             }
+
+//            richTextBox1.AppendText(result);
         }
 
         async void GetLaundryData(string url)
@@ -71,7 +102,7 @@ namespace UMBC_Laundry
         private void roomList_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Find and pass the appropriate room code to the parser
-            GetLaundryData(UMBC_ID + rooms[roomList.SelectedItem.ToString()]);
+            //GetLaundryData(UMBC_ID + rooms[roomList.SelectedItem.ToString()]);
         }
     }
 }
