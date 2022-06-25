@@ -73,7 +73,7 @@
             this.roomList.Name = "roomList";
             this.roomList.Size = new System.Drawing.Size(309, 204);
             this.roomList.TabIndex = 3;
-            this.roomList.SelectedIndexChanged += new System.EventHandler(this.roomList_SelectedIndexChanged);
+//            this.roomList.SelectedIndexChanged += new System.EventHandler(this.roomList_SelectedIndexChanged);
             // 
             // richTextBox1
             // 

@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Net;
 using System.IO;
-
+using Newtonsoft.Json;
+using System.IO.Compression;
 
 /*
  * 
@@ -22,9 +23,9 @@ namespace UMBC_Laundry
 {
     public partial class Form1 : Form
     {
-        HttpClient client = new HttpClient();
+        //HttpClient client = new HttpClient();
         string UMBC_ID = "https://www.laundryview.com/home/5803/48410";
-        string API_KEY = "td8ExBj5mtf-";
+        string API_KEY = "not happening";
 
         /*
         IDictionary<string, string> rooms = new Dictionary<string, string>()
@@ -52,46 +53,52 @@ namespace UMBC_Laundry
             InitializeComponent();
 
             // Load rooms once 
-            
+
             LoadRooms();
 
 
 
         }
 
-        void LoadRooms()
+        async void LoadRooms()
         {
-            // Post request to start project task 
-            string url = "https://www.parsehub.com/api/v2/projects/tpRJpjCBPSBg/run";
-            WebRequest request = WebRequest.Create(url);
-            request.Method = "POST";
-            request.ContentType = "application/json";
-            request.Credentials = new NetworkCredential("email", "password");
+            HttpClientHandler handler = new HttpClientHandler();
+            handler.UseDefaultCredentials = true; 
 
-            string postData = "{\"api_key\":\"" + API_KEY + "\"";
-            using (var sw = new StreamWriter(request.GetRequestStream()))
+            HttpClient client = new HttpClient(handler);
+            
+            // Post request to start run 
+            var values = new Dictionary<string, string>
             {
-                sw.Write(postData);
-                sw.Flush();
-                sw.Close();
+                { "api_key", "nah" },
+            };
 
-                var response = (HttpWebResponse)request.GetResponse();
+            // Send a POST request             
+            var content = new FormUrlEncodedContent(values);
+            var response = await client.PostAsync("https://www.parsehub.com/api/v2/projects/tpRJpjCBPSBg/run", content);
 
-                using (var sr = new StreamReader(response.GetResponseStream()))
-                {
-                    var result = sr.ReadToEnd();
+            // Get previous run data for rooms 
+            var compressedData = await client.GetStringAsync("https://www.parsehub.com/api/v2/projects/tpRJpjCBPSBg/last_ready_run/data?api_key=" + API_KEY);
+            var compressedDataBytes = Encoding.Unicode.GetBytes(compressedData);
+            //await using var input = new MemoryStream(bytes);
+            //await using var output = new MemoryStream();
 
-                    richTextBox1.AppendText(result);
-                }
-            }
 
-//            richTextBox1.AppendText(result);
+
+
+            //dynamic roomsList = JsonConvert.DeserializeObject<dynamic>(responseString3); 
+
+            // Decompress the GZIP data
+            richTextBox1.AppendText("Yea");
+
         }
 
-        async void GetLaundryData(string url)
-        {
-            var html = await client.GetStringAsync(url);
-        }
+
+
+
+
+
+
 
         // Load laundry info every time we change rooms 
         private void roomList_SelectedIndexChanged(object sender, EventArgs e)
