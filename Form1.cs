@@ -44,11 +44,5 @@ namespace UMBC_Laundry
                 return json; 
             }
         }
-
-        // Load laundry info every time we change rooms 
-        private void roomList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Find and pass the appropriate room code to the parser
-        }
     }
 }
