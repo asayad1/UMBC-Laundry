@@ -22,7 +22,7 @@ namespace UMBC_Laundry
             // Get JSON response from API 
             using (var client = new HttpClient(clientHandler))
             {
-                var url = URLFormatter(APIHelper.ROOMS_PROJ_KEY);
+                var url = APIHelper.FormatURL(APIHelper.ROOMS_PROJ_KEY);
                 var result = client.GetAsync(url).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
 
@@ -35,12 +35,6 @@ namespace UMBC_Laundry
                 }
             }
         }
-
-        private string URLFormatter(string PROJ_KEY)
-        {
-            return APIHelper.DEFAULT_URL + PROJ_KEY + "/last_ready_run/data?api_key=" + APIHelper.API_KEY;
-        }
-
 
         // Load laundry info every time we change rooms 
         private void roomList_SelectedIndexChanged(object sender, EventArgs e)
