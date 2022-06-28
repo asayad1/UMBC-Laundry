@@ -8,10 +8,14 @@ namespace UMBC_Laundry
 {
     public partial class Form1 : Form
     {
+        Rooms rooms;
+        LaundryList laundry_rooms;
+
         public Form1()
         {
             InitializeComponent();
             LoadRooms();
+            LoadLaundryData();
         }
 
         void LoadRooms()
@@ -27,7 +31,7 @@ namespace UMBC_Laundry
                 var json = result.Content.ReadAsStringAsync().Result;
 
                 // Deserialize the JSON into a list 
-                Rooms rooms = JsonConvert.DeserializeObject<Rooms>(json);
+                rooms = JsonConvert.DeserializeObject<Rooms>(json);
 
                 foreach (RoomDetails room in rooms.room_list)
                 {
@@ -36,9 +40,30 @@ namespace UMBC_Laundry
             }
         }
 
-        void LoadLaundryData(string room_ID)
+        void LoadLaundryData()
         {
+            // Handle decompression whenever we have a GetRequest 
+            var clientHandler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
 
+            // Get JSON response from API 
+            using (var client = new HttpClient(clientHandler))
+            {
+                var url = APIHelper.FormatURL(APIHelper.LAUNDRY_PROJ_KEY);
+                var result = client.GetAsync(url).Result;
+                var json = result.Content.ReadAsStringAsync().Result;
+
+                // Deserialize the JSON into a list 
+                laundry_rooms = JsonConvert.DeserializeObject<LaundryList>(json);
+
+                foreach (LaundryRoom room in laundry_rooms.room_list)
+                {
+                    richTextBox1.AppendText("------------------------\n");
+                    richTextBox1.AppendText("Name: " + room.room + '\n');
+                    richTextBox1.AppendText("ID: " + room.ID+ '\n');
+                    richTextBox1.AppendText("# Dryers: " + room.available_dryers + '\n');
+                    richTextBox1.AppendText("# Washers: " + room.available_washers + '\n');
+                }
+            }
         }
 
         // Load laundry info every time we change rooms 
