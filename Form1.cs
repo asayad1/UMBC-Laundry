@@ -36,6 +36,11 @@ namespace UMBC_Laundry
             }
         }
 
+        void LoadLaundryData(string room_ID)
+        {
+
+        }
+
         // Load laundry info every time we change rooms 
         private void roomList_SelectedIndexChanged(object sender, EventArgs e)
         {
