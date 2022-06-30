@@ -33,8 +33,11 @@ namespace UMBC_Laundry
         public Form1()
         {
             InitializeComponent();
-            LoadRooms();
-            LoadLaundryData();
+            //LoadRooms();
+            //LoadLaundryData();
+
+            GUIControl gui = new GUIControl(this);
+
         }
 
         void LoadRooms()

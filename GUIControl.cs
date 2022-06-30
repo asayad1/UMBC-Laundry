@@ -10,34 +10,75 @@ namespace UMBC_Laundry
 {
     internal class GUIControl
     {
-        void CreateGUIElement()
+        Form1 ControlForm { get; set; }
+        Size PANEL_SIZE = new Size(340, 50);
+        FlowLayoutPanel MasterPanel;
+
+        public GUIControl(Form1 form)
         {
-            Panel parent_panel = new Panel();
-            Size parent_size = new Size(685, 100);
-            Point parent_loc = new Point(0, 0);
-            PictureBox dryer_image = new PictureBox();
-            PictureBox washer_image = new PictureBox();
-            Label room_name = new Label();
-            Label avail_dryers = new Label();
-            Label avail_washers = new Label();
+            ControlForm = form;
+            CreateFlowPanel();
+            for (int i = 0; i < 10; i++)
+                CreateGUIElement("ABRV-00", "00", "00");
         }
 
-        void CreatePanel()
+        public void CreateGUIElement(string room_name, string avail_wash, string avail_dry)
         {
+            Panel dock_panel = CreatePanel();
+            Label room = CreateLabel(room_name, new Point(0, 0), new Size(100, 30));
+            Label avail_washers = CreateLabel(avail_wash, new Point(185, 10), new Size(40, 30));
+            Label avail_dryers = CreateLabel(avail_dry, new Point(285, 10), new Size(40, 30));
 
+            PictureBox washer = CreatePictureBox(Properties.Resources.washer, new Point(130, 0));
+            PictureBox dryer = CreatePictureBox(Properties.Resources.dryer, new Point(230, 0));
+
+            dock_panel.Controls.Add(room);
+            dock_panel.Controls.Add(avail_washers);
+            dock_panel.Controls.Add(avail_dryers);
+            dock_panel.Controls.Add(washer);
+            dock_panel.Controls.Add(dryer);
+
+            MasterPanel.Controls.Add(dock_panel);
+        }
+
+        void CreateFlowPanel()
+        {
+            MasterPanel = new FlowLayoutPanel();
+            MasterPanel.Location = new Point(0, 0);
+            MasterPanel.AutoScroll = true;
+            MasterPanel.FlowDirection = FlowDirection.LeftToRight;
+            MasterPanel.Size = new Size(365, 390);
+            MasterPanel.BackColor = Color.Black;
+            ControlForm.Controls.Add(MasterPanel);
+        }
+
+        Panel CreatePanel()
+        {
+            Panel panel = new Panel();
+            panel.Location = new Point(0, 0);
+            panel.Size = PANEL_SIZE;
+            panel.BackColor = Color.Goldenrod;
+            return panel;
         }
         
-        void CreateLabel()
+        Label CreateLabel(string text, Point location, Size size)
         {
-
+            Label label = new Label();
+            label.Text = text;
+            label.Font = new Font("Arial", 15);
+            label.Location = location;
+            label.Size = size;
+            return label; 
         }
 
-        void CreatePictureBox()
+        PictureBox CreatePictureBox(Image image, Point location)
         {
-
+            PictureBox picture = new PictureBox();
+            picture.Location = location;
+            picture.Size = new Size(50, 50);
+            picture.SizeMode = PictureBoxSizeMode.Zoom;
+            picture.Image = image;
+            return picture;
         }
-
-        // Panel with textbox, washer/dryer image count
-        // On click creates popup from the bottom 
     }
 }
