@@ -18,8 +18,6 @@ namespace UMBC_Laundry
         {
             ControlForm = form;
             CreateFlowPanel();
-            for (int i = 0; i < 10; i++)
-                CreateGUIElement("ABRV-00", "00", "00");
         }
 
         public void CreateGUIElement(string room_name, string avail_wash, string avail_dry)

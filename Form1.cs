@@ -11,33 +11,20 @@ namespace UMBC_Laundry
     {     
         Rooms rooms;
         LaundryList laundry_rooms;
-        Dictionary<string, string> abrevs = new Dictionary<string, string>()
-        {
-            {"484103", "CPK-58"},
-            {"484102", "CPK-58B"},
-            {"4841027", "CC-LR" },
-            {"4841013", "ERK-36"},
-            {"4841014", "ERK-111"},
-            {"4841011", "HH-114B"},
-            {"4841026", "HH-114F"},
-            {"484107", "ELK-14"},
-            {"4841019", "PTP-8"},
-            {"4841018", "PTP-56"},
-            {"4841024", "PTP-171"},
-            {"4841017", "PMC-3" },
-            {"4841015", "PMC-59"},
-            {"4841023", "SUS-18"},
-            {"4841022", "SUS-71"}
-        };
+
 
         public Form1()
         {
             InitializeComponent();
-            //LoadRooms();
-            //LoadLaundryData();
+            LoadRooms();
+            LoadLaundryData();
 
             GUIControl gui = new GUIControl(this);
 
+            foreach (LaundryRoom room in laundry_rooms.room_list)
+            {
+                gui.CreateGUIElement(APIHelper.abrevs[room.ID], room.available_washers, room.available_dryers);
+            }
         }
 
         void LoadRooms()
