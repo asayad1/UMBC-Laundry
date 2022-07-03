@@ -10,7 +10,7 @@ namespace UMBC_Laundry
     {
         public static readonly string DEFAULT_URL = "https://www.laundryview.com/api/currentRoomData?school_desc_key=5803&location=";
 
-        public static Dictionary<string, string> abrevs = new Dictionary<string, string>()
+        public static Dictionary<string, string> room_details = new Dictionary<string, string>()
         {
             {"484103", "CHESAPEAKE HALL - ROOM 058A"},
             {"484102", "CHESAPEAKE HALL - ROOM 058B"},
