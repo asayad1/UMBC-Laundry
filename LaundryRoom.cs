@@ -8,11 +8,10 @@ namespace UMBC_Laundry
 {
     internal class LaundryRoom
     {
+        public List<Machine> objects { get; set; }
         public string ID { get; set; }
-        public string room { get; set; }
-        public string available_washers { get; set; }
+        public string name { get; set; }
         public string available_dryers { get; set; }
-        public List<Washer> washer { get; set; }
-        public List<Dryer> dryer { get; set; } 
+        public string available_washers { get; set; }
     }
 }

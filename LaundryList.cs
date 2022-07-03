@@ -8,6 +8,6 @@ namespace UMBC_Laundry
 {
     internal class LaundryList
     {
-        public List<LaundryRoom> room_list { get; set; }
+        public List<LaundryRoom> room_list = new List<LaundryRoom>();
     }
 }

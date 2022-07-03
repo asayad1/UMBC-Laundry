@@ -9,37 +9,29 @@ namespace UMBC_Laundry
 {
     public partial class Form1 : Form
     {     
-        Rooms rooms;
-        LaundryList laundry_rooms;
+        LaundryList laundry_rooms = new LaundryList();
 
 
         public Form1()
         {
-            InitializeComponent();
-            LoadRooms();
+            InitializeComponent();  
             LoadLaundryData();
-
-            GUIControl gui = new GUIControl(this);
-
-            foreach (LaundryRoom room in laundry_rooms.room_list)
-            {
-                gui.CreateGUIElement(APIHelper.abrevs[room.ID], room.available_washers, room.available_dryers);
-            }
         }
 
-        void LoadRooms()
-        {
-            string json = GETRequest(APIHelper.ROOMS_PROJ_KEY);
-            rooms = JsonConvert.DeserializeObject<Rooms>(json); 
-        }
 
         void LoadLaundryData()
         {
-            string json = GETRequest(APIHelper.LAUNDRY_PROJ_KEY);
-            laundry_rooms = JsonConvert.DeserializeObject<LaundryList>(json);
+            foreach (string room_loc in APIHelper.room_details.Keys)
+            {
+                string json = GETRequest(room_loc);
+                LaundryRoom room = JsonConvert.DeserializeObject<LaundryRoom>(json);
+                room.name = APIHelper.room_details[room_loc];
+                room.ID = room_loc;
+                laundry_rooms.room_list.Add(room);
+            }
         }
 
-        string GETRequest(string PROJECT_KEY)
+        string GETRequest(string room_loc)
         {
             // Handle decompression whenever we have a GetRequest 
             var clientHandler = new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
@@ -47,7 +39,7 @@ namespace UMBC_Laundry
             // Get JSON response from API 
             using (var client = new HttpClient(clientHandler))
             {
-                var url = APIHelper.FormatURL(PROJECT_KEY);
+                var url = APIHelper.FormatURL(room_loc);
                 var result = client.GetAsync(url).Result;
                 var json = result.Content.ReadAsStringAsync().Result;
                 return json; 
