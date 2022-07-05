@@ -9,10 +9,13 @@ namespace UMBC_Laundry
     public partial class Form1 : Form
     {     
         LaundryList laundry_rooms = new LaundryList();
+        GUIControl gui; 
 
         public Form1()
         {
-            InitializeComponent();  
+            InitializeComponent();
+            gui = new GUIControl(this);
+
             //LoadLaundryData();
         }
 
@@ -45,7 +48,17 @@ namespace UMBC_Laundry
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show(this.Size.Width + " and " + this.Size.Height);
+            gui.CreateRoomTemplate();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel2.Visible = (flowLayoutPanel2.Visible) ? (false) : (true);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel3.Visible = (flowLayoutPanel3.Visible) ? (false) : (true);
         }
     }
 }
