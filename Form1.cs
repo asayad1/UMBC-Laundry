@@ -2,21 +2,22 @@
 using System.Windows.Forms;
 using System.Net.Http;
 using System.Net;
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace UMBC_Laundry
 {
     public partial class Form1 : Form
     {     
         LaundryList laundry_rooms = new LaundryList();
+        GUIControl gui; 
+
 
         public Form1()
         {
-            InitializeComponent();  
-            LoadLaundryData();
+            InitializeComponent();
+            gui = new GUIControl(this);
         }
-
 
         void LoadLaundryData()
         {
@@ -43,6 +44,51 @@ namespace UMBC_Laundry
                 var json = result.Content.ReadAsStringAsync().Result;
                 return json; 
             }
+        }
+
+        #region Events
+        private void panel_MouseEnter(object sender, EventArgs e)
+        {
+            Control p = (Control)sender;
+
+            // If the control is not the container panel, set too transparent
+            if (p.Parent != roomPanel)
+            {
+                p.BackColor = Color.Transparent;
+                p.Parent.BackColor = Color.FromArgb(247, 200, 0);
+            } else
+            {
+                p.BackColor = Color.FromArgb(247, 200, 0);
+            }
+        }
+
+        private void panel_MouseLeave (object sender, EventArgs e)
+        {
+            Control p = (Control)sender;
+
+            // If the control is not the container panel, set too transparent
+            if (p.Parent != roomPanel)
+            {
+                p.BackColor = Color.Transparent;
+            }
+            else
+            {
+                p.BackColor = Color.FromArgb(237, 165, 32);
+            }
+        }
+
+        // Move the panel into place
+        private void optionsButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            roomPanel.Location = (roomPanel.Location.X < 0) ? (new Point(0, 0)) : (new Point(-265, 0));
+        }
+        #endregion
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            LoadLaundryData();
+            gui.CreateRoomTemplate();
+
         }
     }
 }
