@@ -50,15 +50,5 @@ namespace UMBC_Laundry
         {
             gui.CreateRoomTemplate();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            flowLayoutPanel2.Visible = (flowLayoutPanel2.Visible) ? (false) : (true);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            flowLayoutPanel3.Visible = (flowLayoutPanel3.Visible) ? (false) : (true);
-        }
     }
 }

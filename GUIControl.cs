@@ -25,47 +25,46 @@ namespace UMBC_Laundry
 
         public void CreateRoomTemplate()
         {
+            // Create the room label
+            Label room_name = CreateLabel("Room Name", new Point(50, 0), 32, new Size(600, 50), true);
+            Label update_label = CreateLabel("Updating In:", new Point(57, 47), 11, new Size(85, 18), false);
+            Label update_label_num = CreateLabel("60s", new Point(139, 48), 11, new Size(32, 18), false);
+            Label available_machines = CreateLabel("0 W, 0 D", new Point(236, 47), 11, new Size(61, 18), false);
+
+
             // Create the docking panels
-            FlowLayoutPanel washerPanels = CreateFlowPanel(new Point(58, 75), DOCK_PANEL_SIZE);
+            FlowLayoutPanel washerPanels = CreateFlowPanel(new Point(55, 75), DOCK_PANEL_SIZE);
             FlowLayoutPanel dryerPanels = CreateFlowPanel(new Point(414, 75), DOCK_PANEL_SIZE);
 
-            for (int i = 0; i < 10; i ++)
-               washerPanels.Controls.Add(CreateInfoPanel());
-
-
+            
+            for (int i = 0; i < 5; i ++)
+            { 
+                washerPanels.Controls.Add(CreateInfoPanel());
+                dryerPanels.Controls.Add(CreateInfoPanel());
+            }
 
             // Add the panels to the control 
+            ControlForm.Controls.Add(room_name);
+            ControlForm.Controls.Add(update_label);
+            ControlForm.Controls.Add(update_label_num);
+            ControlForm.Controls.Add(available_machines);
             ControlForm.Controls.Add(washerPanels);
             ControlForm.Controls.Add(dryerPanels);
-
         }
 
 
         Panel CreateInfoPanel()
         {
             Panel infoPanel = CreatePanel(DEFAULT_PANEL_LOC, new Size(330, 42));
+            Label machine_type = CreateLabel("Washer 00", new Point(0, 8), 17, new Size(125, 25), false);
+            Label machine_status = CreateLabel("Available", new Point(225, 8), 17, new Size(200, 25), false);
             
             
-            
+            // Add the controls to the panel
+            infoPanel.Controls.Add(machine_type);
+            infoPanel.Controls.Add(machine_status);
+
             return infoPanel;
-        }
-
-
-        public void CreateGUIElement(string room_name, string avail_wash, string avail_dry)
-        {
-            //Panel dock_panel = CreatePanel();
-            Label room = CreateLabel(room_name, new Point(0, 0), new Size(100, 30));
-            Label avail_washers = CreateLabel(avail_wash, new Point(185, 10), new Size(40, 30));
-            Label avail_dryers = CreateLabel(avail_dry, new Point(285, 10), new Size(40, 30));
-
-            PictureBox washer = CreatePictureBox(Properties.Resources.washer, new Point(130, 0));
-            PictureBox dryer = CreatePictureBox(Properties.Resources.dryer, new Point(230, 0));
-
-            //dock_panel.Controls.Add(room);
-            //dock_panel.Controls.Add(avail_washers);
-            //dock_panel.Controls.Add(avail_dryers);
-            //dock_panel.Controls.Add(washer);
-            //dock_panel.Controls.Add(dryer);
         }
 
         FlowLayoutPanel CreateFlowPanel(Point location, Size size)
@@ -83,17 +82,30 @@ namespace UMBC_Laundry
             Panel panel = new Panel();
             panel.Location = location;
             panel.Size = size;
-            panel.BackColor = Color.PeachPuff;
+            /// Color will change depending on if the machine is available
+            panel.BackColor = Color.Goldenrod;
+            ///
+
             return panel;
         }
         
-        Label CreateLabel(string text, Point location, Size size)
+        Label CreateLabel(string text, Point location, int fnt_size, Size size, bool underline)
         {
             Label label = new Label();
             label.Text = text;
-            label.Font = new Font("Arial", 15);
+            
+            if (underline)
+            {
+                label.Font = new Font("Roboto Light", fnt_size, FontStyle.Underline);
+            }
+            else
+            {
+                label.Font = new Font("Roboto Light", fnt_size);
+            }
+
             label.Location = location;
             label.Size = size;
+
             return label; 
         }
 
