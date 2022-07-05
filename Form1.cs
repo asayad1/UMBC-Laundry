@@ -12,6 +12,7 @@ namespace UMBC_Laundry
         LaundryList laundry_rooms = new LaundryList();
         GUIControl gui; 
 
+
         public Form1()
         {
             InitializeComponent();
