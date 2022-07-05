@@ -16,8 +16,6 @@ namespace UMBC_Laundry
         {
             InitializeComponent();
             gui = new GUIControl(this);
-
-            //LoadLaundryData();
         }
 
         void LoadLaundryData()
@@ -45,11 +43,6 @@ namespace UMBC_Laundry
                 var json = result.Content.ReadAsStringAsync().Result;
                 return json; 
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            gui.CreateRoomTemplate();
         }
 
         #region Events
@@ -89,5 +82,12 @@ namespace UMBC_Laundry
             roomPanel.Location = (roomPanel.Location.X < 0) ? (new Point(0, 0)) : (new Point(-265, 0));
         }
         #endregion
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            LoadLaundryData();
+            gui.CreateRoomTemplate();
+
+        }
     }
 }
