@@ -19,19 +19,6 @@ namespace UMBC_Laundry
             ControlForm = form;
         }
 
-        /*
-        public void CreateSideTemplate()
-        {
-            // Create the panel
-            Panel side_panel = CreatePanel(DEFAULT_PANEL_LOC, new Size(317, 482));
-            side_panel.BackColor = Color.FromArgb(237, 165, 32);
-            side_panel.BorderStyle = BorderStyle.FixedSingle;
-            side_panel.RightToLeft = RightToLeft.Yes;
-
-            ControlForm.Controls.Add(side_panel);
-        }
-        */
-
         public void CreateRoomTemplate()
         {
             // Create the room label

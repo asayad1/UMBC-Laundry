@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.optionsButton = new System.Windows.Forms.PictureBox();
@@ -89,23 +88,13 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::UMBC_Laundry.Properties.Resources.settings;
-            this.pictureBox2.Location = new System.Drawing.Point(724, 1);
+            this.pictureBox2.Location = new System.Drawing.Point(732, -8);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(51, 68);
+            this.pictureBox2.Size = new System.Drawing.Size(52, 53);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(632, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // optionsPanel
             // 
@@ -141,6 +130,7 @@
             this.optionsButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.optionsButton.TabIndex = 20;
             this.optionsButton.TabStop = false;
+            this.optionsButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.optionsButton_MouseClick);
             this.optionsButton.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.optionsButton.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -395,7 +385,7 @@
             this.roomPanel.Controls.Add(this.panel2);
             this.roomPanel.Controls.Add(this.panel1);
             this.roomPanel.Controls.Add(this.optionsPanel);
-            this.roomPanel.Location = new System.Drawing.Point(0, 0);
+            this.roomPanel.Location = new System.Drawing.Point(-265, 0);
             this.roomPanel.Margin = new System.Windows.Forms.Padding(2);
             this.roomPanel.Name = "roomPanel";
             this.roomPanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -523,7 +513,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(776, 483);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.roomPanel);
             this.Controls.Add(this.pictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -575,7 +564,6 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel optionsPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox optionsButton;

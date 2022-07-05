@@ -50,35 +50,9 @@ namespace UMBC_Laundry
         private void Form1_Load(object sender, EventArgs e)
         {
             gui.CreateRoomTemplate();
-            //gui.CreateSideTemplate();
         }
 
-        private void optionsButton_MouseEnter(object sender, EventArgs e)
-        {
-            optionsPanel.BackColor = Color.FromArgb(247, 200, 0);
-        }
-
-        private void optionsPanel_MouseEnter(object sender, EventArgs e)
-        {
-            optionsPanel.BackColor = Color.FromArgb(247, 200, 0);
-
-        }
-
-        private void optionsPanel_MouseLeave(object sender, EventArgs e)
-        {
-            optionsPanel.BackColor = Color.FromArgb(237, 165, 32);
-        }
-
-        private void optionsButton_MouseLeave(object sender, EventArgs e)
-        {
-            optionsPanel.BackColor = Color.FromArgb(237, 165, 32);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            roomPanel.Visible = (roomPanel.Visible) ? false : true;
-        }
-
+        #region Events
         private void panel_MouseEnter(object sender, EventArgs e)
         {
             Control p = (Control)sender;
@@ -102,12 +76,18 @@ namespace UMBC_Laundry
             if (p.Parent != roomPanel)
             {
                 p.BackColor = Color.Transparent;
-                //p.Parent.BackColor = Color.FromArgb(247, 200, 0);
             }
             else
             {
                 p.BackColor = Color.FromArgb(237, 165, 32);
             }
         }
+
+        // Move the panel into place
+        private void optionsButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            roomPanel.Location = (roomPanel.Location.X < 0) ? (new Point(0, 0)) : (new Point(-265, 0));
+        }
+        #endregion
     }
 }
