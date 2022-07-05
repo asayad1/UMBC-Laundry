@@ -129,8 +129,12 @@ namespace UMBC_Laundry
                 LoadLaundryData(current_room_loc);
                 gui.controls[2].Text = "60";
             }
+        }
 
-            //refreshTimer.
+        // Open the settings form 
+        private void settingsButton_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

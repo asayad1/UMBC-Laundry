@@ -22,16 +22,20 @@ namespace UMBC_Laundry
 
         public void CreateRoomTemplate(LaundryRoom room)
         {
+            // Derender controls if there are any
             if (controls.Count > 0)
             {
                 DerenderControls();
             }
 
+            int avail_washers = 0;
+            int avail_dryers = 0;
+
             // Create the room label
             Label room_name = CreateLabel(room.name, new Point(50, 0), 32, new Size(700, 50), true);
             Label update_label = CreateLabel("Updating In:", new Point(57, 47), 11, new Size(85, 18), false);
             Label update_label_num = CreateLabel("60", new Point(139, 48), 11, new Size(32, 18), false);
-            Label available_machines = CreateLabel("0 W, 0 D", new Point(236, 47), 11, new Size(61, 18), false);
+            Label available_machines = CreateLabel("0 W, 0 D", new Point(236, 47), 11, new Size(85, 18), false);
 
             // Create the docking panels
             FlowLayoutPanel washerPanels = CreateFlowPanel(new Point(55, 75), DOCK_PANEL_SIZE);
@@ -44,6 +48,10 @@ namespace UMBC_Laundry
                 // Add to washer info
                 if (machine.appliance_type == "W")
                 {
+                    if (machine.time_left_lite == "Available")
+                    {
+                        avail_washers += 1;
+                    }
                     string machine_number = "Washer " + machine.appliance_desc;
                     string machine_status = machine.time_left_lite;
                     Panel infoPanel = CreateInfoPanel(machine_number, machine_status, machine.percentage);
@@ -54,6 +62,10 @@ namespace UMBC_Laundry
                 {
                     if (machine.appliance_type == "D")
                     {
+                        if (machine.time_left_lite == "Available")
+                        {
+                            avail_dryers += 1;
+                        }
                         string machine_number = "Dryer " + machine.appliance_desc;
                         string machine_status = machine.time_left_lite;
                         Panel infoPanel = CreateInfoPanel(machine_number, machine_status, machine.percentage);
@@ -63,12 +75,18 @@ namespace UMBC_Laundry
 
                     if (machine.appliance_desc2 != null)
                     {
+                        if (machine.time_left_lite2 == "Available")
+                        {
+                            avail_dryers += 1;
+                        }
                         string machine_number2 = "Dryer " + machine.appliance_desc2;
                         string machine_status2 = machine.time_left_lite2;
                         Panel infoPanel = CreateInfoPanel(machine_number2, machine_status2, machine.percentage2);
                         dryerPanels.Controls.Add(infoPanel);
                     }
                 }
+
+                available_machines.Text = avail_washers + " W, " + avail_dryers + " D";
             }
 
             // Add the panels to the control 

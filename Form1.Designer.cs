@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.settingsButton = new System.Windows.Forms.PictureBox();
             this.optionsPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.optionsButton = new System.Windows.Forms.PictureBox();
@@ -66,7 +66,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).BeginInit();
             this.optionsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsButton)).BeginInit();
             this.panel1.SuspendLayout();
@@ -87,16 +87,17 @@
             this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox2
+            // settingsButton
             // 
-            this.pictureBox2.Image = global::UMBC_Laundry.Properties.Resources.settings;
-            this.pictureBox2.Location = new System.Drawing.Point(732, -8);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(52, 53);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
+            this.settingsButton.Image = global::UMBC_Laundry.Properties.Resources.settings;
+            this.settingsButton.Location = new System.Drawing.Point(732, -8);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(52, 53);
+            this.settingsButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.settingsButton.TabIndex = 21;
+            this.settingsButton.TabStop = false;
+            this.settingsButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.settingsButton_MouseClick);
             // 
             // optionsPanel
             // 
@@ -566,7 +567,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(776, 483);
             this.Controls.Add(this.roomPanel);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.settingsButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -575,7 +576,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UMBC Laundry View";
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsButton)).EndInit();
             this.optionsPanel.ResumeLayout(false);
             this.optionsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsButton)).EndInit();
@@ -615,7 +616,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox settingsButton;
         private System.Windows.Forms.Panel optionsPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox optionsButton;
