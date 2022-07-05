@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.Net.Http;
 using System.Net;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace UMBC_Laundry
@@ -11,13 +10,11 @@ namespace UMBC_Laundry
     {     
         LaundryList laundry_rooms = new LaundryList();
 
-
         public Form1()
         {
             InitializeComponent();  
-            LoadLaundryData();
+            //LoadLaundryData();
         }
-
 
         void LoadLaundryData()
         {
@@ -44,6 +41,11 @@ namespace UMBC_Laundry
                 var json = result.Content.ReadAsStringAsync().Result;
                 return json; 
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //MessageBox.Show(this.Size.Width + " and " + this.Size.Height);
         }
     }
 }
