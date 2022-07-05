@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.optionsPanel = new System.Windows.Forms.Panel();
@@ -64,6 +65,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
+            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.optionsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optionsButton)).BeginInit();
@@ -363,7 +365,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(235, 29);
             this.label10.TabIndex = 22;
-            this.label10.Text = "Hillside Apts. -  Elk 15";
+            this.label10.Text = "Hillside Apts. -  Elk 14";
             this.label10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label10.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label10.MouseHover += new System.EventHandler(this.panel_MouseLeave);
@@ -552,6 +554,11 @@
             this.label15.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label15.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
+            // refreshTimer
+            // 
+            this.refreshTimer.Interval = 1000;
+            this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,6 +650,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Timer refreshTimer;
     }
 }
 

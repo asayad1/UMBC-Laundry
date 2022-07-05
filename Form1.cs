@@ -11,7 +11,7 @@ namespace UMBC_Laundry
     {     
         GUIControl gui;
         bool isPanelOpen = false;
-
+        string current_room_loc = "484103";
         public Form1()
         {
             InitializeComponent();
@@ -106,13 +106,31 @@ namespace UMBC_Laundry
             }
 
             // Render the info panels
-            LoadLaundryData(loc);
+            current_room_loc = loc;
+            LoadLaundryData(current_room_loc);
         }
         #endregion
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            LoadLaundryData("484103");
+            LoadLaundryData(current_room_loc);
+            refreshTimer.Enabled = true;
+        }
+
+        private void refreshTimer_Tick(object sender, EventArgs e)
+        {
+            if (gui.controls[2].Text != "0")
+            {
+                gui.controls[2].Text = (Int32.Parse(gui.controls[2].Text) - 1).ToString();
+            }
+            else
+            {
+                // Update the room details
+                LoadLaundryData(current_room_loc);
+                gui.controls[2].Text = "60";
+            }
+
+            //refreshTimer.
         }
     }
 }

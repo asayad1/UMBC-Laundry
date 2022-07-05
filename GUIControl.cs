@@ -13,7 +13,7 @@ namespace UMBC_Laundry
         Form1 ControlForm { get; set; }
         Size DOCK_PANEL_SIZE = new Size(356, 405);
         Point DEFAULT_PANEL_LOC = new Point(0, 0);
-        List<Control> controls = new List<Control>();
+        public List<Control> controls = new List<Control>();
 
         public GUIControl(Form1 form)
         {
@@ -30,7 +30,7 @@ namespace UMBC_Laundry
             // Create the room label
             Label room_name = CreateLabel(room.name, new Point(50, 0), 32, new Size(700, 50), true);
             Label update_label = CreateLabel("Updating In:", new Point(57, 47), 11, new Size(85, 18), false);
-            Label update_label_num = CreateLabel("60s", new Point(139, 48), 11, new Size(32, 18), false);
+            Label update_label_num = CreateLabel("60", new Point(139, 48), 11, new Size(32, 18), false);
             Label available_machines = CreateLabel("0 W, 0 D", new Point(236, 47), 11, new Size(61, 18), false);
 
             // Create the docking panels
@@ -46,7 +46,8 @@ namespace UMBC_Laundry
                 {
                     string machine_number = "Washer " + machine.appliance_desc;
                     string machine_status = machine.time_left_lite;
-                    washerPanels.Controls.Add(CreateInfoPanel(machine_number, machine_status));
+                    Panel infoPanel = CreateInfoPanel(machine_number, machine_status, machine.percentage);
+                    washerPanels.Controls.Add(infoPanel);
                 }
                 // Add to dryer info
                 else
@@ -55,7 +56,8 @@ namespace UMBC_Laundry
                     {
                         string machine_number = "Dryer " + machine.appliance_desc;
                         string machine_status = machine.time_left_lite;
-                        Panel infoPanel = CreateInfoPanel(machine_number, machine_status);
+                        Panel infoPanel = CreateInfoPanel(machine_number, machine_status, machine.percentage);
+                        
                         dryerPanels.Controls.Add(infoPanel);
                     }
 
@@ -63,18 +65,11 @@ namespace UMBC_Laundry
                     {
                         string machine_number2 = "Dryer " + machine.appliance_desc2;
                         string machine_status2 = machine.time_left_lite2;
-                        dryerPanels.Controls.Add(CreateInfoPanel(machine_number2, machine_status2));
+                        Panel infoPanel = CreateInfoPanel(machine_number2, machine_status2, machine.percentage2);
+                        dryerPanels.Controls.Add(infoPanel);
                     }
                 }
             }
-
-            /*
-            for (int i = 0; i < 15; i ++)
-            { 
-                washerPanels.Controls.Add(CreateInfoPanel());
-                dryerPanels.Controls.Add(CreateInfoPanel());
-            }
-            */
 
             // Add the panels to the control 
             controls.Add(room_name);
@@ -102,12 +97,37 @@ namespace UMBC_Laundry
             controls.Clear();
         }
 
-        Panel CreateInfoPanel(string machine_name, string machine_state)
+        Panel CreateInfoPanel(string machine_name, string machine_state, string percentage)
         {
             Panel infoPanel = CreatePanel(DEFAULT_PANEL_LOC, new Size(330, 42));
             Label machine_type = CreateLabel(machine_name, new Point(0, 8), 17, new Size(125, 25), false);
             Label machine_status = CreateLabel(machine_state, new Point(225, 8), 17, new Size(200, 25), false);
-            
+
+            // Handling colors & formatting
+            if (machine_state == "Offline")
+            {
+                machine_status.Location = new Point(250, 8);
+                infoPanel.BackColor = Color.Gray;
+            }
+            else if (machine_state == "Out of service")
+            {
+                machine_status.Location = new Point(180, 8);
+                infoPanel.BackColor = Color.Maroon;
+            }
+            else if (machine_state == "Available")
+            {
+                infoPanel.BackColor = Color.Goldenrod;
+            }
+            else
+            {
+                string fpercent = percentage.Substring(0, 4);
+                machine_status.Text = "In Use (" + fpercent + "%)"; 
+                infoPanel.BackColor = Color.DarkGoldenrod;
+                machine_status.Location = new Point(175, 8);
+            }
+
+
+
             // Add the controls to the panel
             infoPanel.Controls.Add(machine_type);
             infoPanel.Controls.Add(machine_status);
