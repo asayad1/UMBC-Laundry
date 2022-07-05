@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using System.Net;
 using Newtonsoft.Json;
+using System.Drawing;
 
 namespace UMBC_Laundry
 {
@@ -49,6 +50,64 @@ namespace UMBC_Laundry
         private void Form1_Load(object sender, EventArgs e)
         {
             gui.CreateRoomTemplate();
+            //gui.CreateSideTemplate();
+        }
+
+        private void optionsButton_MouseEnter(object sender, EventArgs e)
+        {
+            optionsPanel.BackColor = Color.FromArgb(247, 200, 0);
+        }
+
+        private void optionsPanel_MouseEnter(object sender, EventArgs e)
+        {
+            optionsPanel.BackColor = Color.FromArgb(247, 200, 0);
+
+        }
+
+        private void optionsPanel_MouseLeave(object sender, EventArgs e)
+        {
+            optionsPanel.BackColor = Color.FromArgb(237, 165, 32);
+        }
+
+        private void optionsButton_MouseLeave(object sender, EventArgs e)
+        {
+            optionsPanel.BackColor = Color.FromArgb(237, 165, 32);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            roomPanel.Visible = (roomPanel.Visible) ? false : true;
+        }
+
+        private void panel_MouseEnter(object sender, EventArgs e)
+        {
+            Control p = (Control)sender;
+
+            // If the control is not the container panel, set too transparent
+            if (p.Parent != roomPanel)
+            {
+                p.BackColor = Color.Transparent;
+                p.Parent.BackColor = Color.FromArgb(247, 200, 0);
+            } else
+            {
+                p.BackColor = Color.FromArgb(247, 200, 0);
+            }
+        }
+
+        private void panel_MouseLeave (object sender, EventArgs e)
+        {
+            Control p = (Control)sender;
+
+            // If the control is not the container panel, set too transparent
+            if (p.Parent != roomPanel)
+            {
+                p.BackColor = Color.Transparent;
+                //p.Parent.BackColor = Color.FromArgb(247, 200, 0);
+            }
+            else
+            {
+                p.BackColor = Color.FromArgb(237, 165, 32);
+            }
         }
     }
 }

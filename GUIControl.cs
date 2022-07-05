@@ -11,17 +11,26 @@ namespace UMBC_Laundry
     internal class GUIControl
     {
         Form1 ControlForm { get; set; }
-        Size PANEL_SIZE = new Size(355, 390);
         Size DOCK_PANEL_SIZE = new Size(356, 405);
         Point DEFAULT_PANEL_LOC = new Point(0, 0);
-
 
         public GUIControl(Form1 form)
         {
             ControlForm = form;
-            //CreateFlowPanel();
         }
 
+        /*
+        public void CreateSideTemplate()
+        {
+            // Create the panel
+            Panel side_panel = CreatePanel(DEFAULT_PANEL_LOC, new Size(317, 482));
+            side_panel.BackColor = Color.FromArgb(237, 165, 32);
+            side_panel.BorderStyle = BorderStyle.FixedSingle;
+            side_panel.RightToLeft = RightToLeft.Yes;
+
+            ControlForm.Controls.Add(side_panel);
+        }
+        */
 
         public void CreateRoomTemplate()
         {
@@ -82,9 +91,10 @@ namespace UMBC_Laundry
             Panel panel = new Panel();
             panel.Location = location;
             panel.Size = size;
+            
             /// Color will change depending on if the machine is available
             panel.BackColor = Color.Goldenrod;
-            ///
+
 
             return panel;
         }
