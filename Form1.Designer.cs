@@ -141,7 +141,9 @@
             this.panel1.Location = new System.Drawing.Point(0, 53);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(298, 38);
-            this.panel1.TabIndex = 23;
+            this.panel1.TabIndex = 24;
+            this.panel1.Tag = "484103";
+            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel1.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel1.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -154,6 +156,7 @@
             this.label2.Size = new System.Drawing.Size(247, 29);
             this.label2.TabIndex = 22;
             this.label2.Text = "Chesapeake Hall - 58A\r\n";
+            this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label2.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label2.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -164,7 +167,9 @@
             this.panel2.Location = new System.Drawing.Point(0, 92);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(298, 38);
-            this.panel2.TabIndex = 24;
+            this.panel2.TabIndex = 25;
+            this.panel2.Tag = "484102";
+            this.panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel2.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel2.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -177,6 +182,7 @@
             this.label3.Size = new System.Drawing.Size(247, 29);
             this.label3.TabIndex = 22;
             this.label3.Text = "Chesapeake Hall - 58B\r\n";
+            this.label3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label3.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label3.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -187,7 +193,9 @@
             this.panel4.Location = new System.Drawing.Point(0, 129);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(298, 38);
-            this.panel4.TabIndex = 25;
+            this.panel4.TabIndex = 26;
+            this.panel4.Tag = "4841027";
+            this.panel4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel4.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel4.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -200,6 +208,7 @@
             this.label5.Size = new System.Drawing.Size(243, 29);
             this.label5.TabIndex = 22;
             this.label5.Text = "Community Center LR";
+            this.label5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label5.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label5.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -210,7 +219,9 @@
             this.panel3.Location = new System.Drawing.Point(0, 168);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(298, 38);
-            this.panel3.TabIndex = 26;
+            this.panel3.TabIndex = 27;
+            this.panel3.Tag = "4841013";
+            this.panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel3.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel3.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -223,6 +234,7 @@
             this.label4.Size = new System.Drawing.Size(193, 29);
             this.label4.TabIndex = 22;
             this.label4.Text = "Erickson Hall - 36";
+            this.label4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label4.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label4.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -233,7 +245,9 @@
             this.panel6.Location = new System.Drawing.Point(0, 207);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(298, 38);
-            this.panel6.TabIndex = 27;
+            this.panel6.TabIndex = 28;
+            this.panel6.Tag = "4841014";
+            this.panel6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel6.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel6.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -246,6 +260,7 @@
             this.label7.Size = new System.Drawing.Size(206, 29);
             this.label7.TabIndex = 22;
             this.label7.Text = "Erickson Hall - 111";
+            this.label7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label7.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label7.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -257,6 +272,8 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(298, 38);
             this.panel7.TabIndex = 28;
+            this.panel7.Tag = "4841026";
+            this.panel7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel7.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel7.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -269,6 +286,7 @@
             this.label8.Size = new System.Drawing.Size(251, 29);
             this.label8.TabIndex = 22;
             this.label8.Text = "Harbor Hall - 114 Front";
+            this.label8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label8.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label8.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -280,6 +298,8 @@
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(298, 38);
             this.panel8.TabIndex = 29;
+            this.panel8.Tag = "4841011";
+            this.panel8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel8.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel8.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -292,6 +312,7 @@
             this.label9.Size = new System.Drawing.Size(247, 29);
             this.label9.TabIndex = 22;
             this.label9.Text = "Harbor Hall - 114 Back";
+            this.label9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label9.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label9.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -303,6 +324,8 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(298, 38);
             this.panel12.TabIndex = 32;
+            this.panel12.Tag = "4841018";
+            this.panel12.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel12.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel12.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -315,6 +338,7 @@
             this.label13.Size = new System.Drawing.Size(203, 29);
             this.label13.TabIndex = 22;
             this.label13.Text = "Patapsco Hall - 56";
+            this.label13.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label13.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label13.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -326,6 +350,8 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(298, 38);
             this.panel9.TabIndex = 30;
+            this.panel9.Tag = "484107";
+            this.panel9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel9.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel9.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -338,6 +364,7 @@
             this.label10.Size = new System.Drawing.Size(235, 29);
             this.label10.TabIndex = 22;
             this.label10.Text = "Hillside Apts. -  Elk 15";
+            this.label10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label10.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label10.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -349,6 +376,8 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(298, 38);
             this.panel10.TabIndex = 31;
+            this.panel10.Tag = "4841019";
+            this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel10.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel10.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -361,6 +390,7 @@
             this.label11.Size = new System.Drawing.Size(190, 29);
             this.label11.TabIndex = 22;
             this.label11.Text = "Patapsco Hall - 8";
+            this.label11.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label11.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label11.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -400,6 +430,8 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(298, 38);
             this.panel15.TabIndex = 37;
+            this.panel15.Tag = "4841022";
+            this.panel15.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel15.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel15.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -412,6 +444,7 @@
             this.label16.Size = new System.Drawing.Size(233, 29);
             this.label16.TabIndex = 22;
             this.label16.Text = "Susquehanna Hall 71";
+            this.label16.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label16.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label16.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -423,6 +456,8 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(298, 38);
             this.panel5.TabIndex = 35;
+            this.panel5.Tag = "4841015";
+            this.panel5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel5.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel5.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -435,6 +470,7 @@
             this.label6.Size = new System.Drawing.Size(199, 29);
             this.label6.TabIndex = 22;
             this.label6.Text = "Potomac Hall - 59";
+            this.label6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label6.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label6.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -446,6 +482,8 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(298, 38);
             this.panel11.TabIndex = 34;
+            this.panel11.Tag = "4841017";
+            this.panel11.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel11.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel11.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -458,6 +496,7 @@
             this.label12.Size = new System.Drawing.Size(186, 29);
             this.label12.TabIndex = 22;
             this.label12.Text = "Potomac Hall - 3";
+            this.label12.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label12.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label12.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -469,6 +508,8 @@
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(298, 38);
             this.panel13.TabIndex = 36;
+            this.panel13.Tag = "4841023";
+            this.panel13.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel13.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel13.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -481,6 +522,7 @@
             this.label14.Size = new System.Drawing.Size(233, 29);
             this.label14.TabIndex = 22;
             this.label14.Text = "Susquehanna Hall 18";
+            this.label14.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label14.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label14.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -492,6 +534,8 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(298, 38);
             this.panel14.TabIndex = 33;
+            this.panel14.Tag = "4841024";
+            this.panel14.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.panel14.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.panel14.MouseLeave += new System.EventHandler(this.panel_MouseLeave);
             // 
@@ -504,6 +548,7 @@
             this.label15.Size = new System.Drawing.Size(216, 29);
             this.label15.TabIndex = 22;
             this.label15.Text = "Patapsco Hall - 171";
+            this.label15.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
             this.label15.MouseEnter += new System.EventHandler(this.panel_MouseEnter);
             this.label15.MouseHover += new System.EventHandler(this.panel_MouseLeave);
             // 

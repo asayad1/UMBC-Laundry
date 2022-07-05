@@ -9,9 +9,8 @@ namespace UMBC_Laundry
 {
     public partial class Form1 : Form
     {     
-        LaundryList laundry_rooms = new LaundryList();
-        GUIControl gui; 
-
+        GUIControl gui;
+        bool isPanelOpen = false;
 
         public Form1()
         {
@@ -19,16 +18,14 @@ namespace UMBC_Laundry
             gui = new GUIControl(this);
         }
 
-        void LoadLaundryData()
+        void LoadLaundryData(string room_loc)
         {
-            foreach (string room_loc in APIHelper.room_details.Keys)
-            {
-                string json = GETRequest(room_loc);
-                LaundryRoom room = JsonConvert.DeserializeObject<LaundryRoom>(json);
-                room.name = APIHelper.room_details[room_loc];
-                room.ID = room_loc;
-                laundry_rooms.room_list.Add(room);
-            }
+            string json = GETRequest(room_loc);
+            LaundryRoom room = JsonConvert.DeserializeObject<LaundryRoom>(json);
+            room.name = APIHelper.room_details[room_loc];
+            room.ID = room_loc;
+
+            gui.CreateRoomTemplate(room);
         }
 
         string GETRequest(string room_loc)
@@ -51,14 +48,18 @@ namespace UMBC_Laundry
         {
             Control p = (Control)sender;
 
-            // If the control is not the container panel, set too transparent
-            if (p.Parent != roomPanel)
+            // Make sure the panel is open
+            if (isPanelOpen)
             {
-                p.BackColor = Color.Transparent;
-                p.Parent.BackColor = Color.FromArgb(247, 200, 0);
-            } else
-            {
-                p.BackColor = Color.FromArgb(247, 200, 0);
+                // If the control is not the container panel, set too transparent
+                if (p.Parent != roomPanel)
+                {
+                    p.BackColor = Color.Transparent;
+                    p.Parent.BackColor = Color.FromArgb(247, 200, 0);
+                } else
+                {
+                    p.BackColor = Color.FromArgb(247, 200, 0);
+                }
             }
         }
 
@@ -66,29 +67,52 @@ namespace UMBC_Laundry
         {
             Control p = (Control)sender;
 
-            // If the control is not the container panel, set too transparent
-            if (p.Parent != roomPanel)
+            // Only if panel is open
+            if (isPanelOpen)
             {
-                p.BackColor = Color.Transparent;
-            }
-            else
-            {
-                p.BackColor = Color.FromArgb(237, 165, 32);
+                // If the control is not the container panel, set too transparent
+                if (p.Parent != roomPanel)
+                {
+                    p.BackColor = Color.Transparent;
+                }
+                else
+                {
+                    p.BackColor = Color.FromArgb(237, 165, 32);
+                }
             }
         }
 
         // Move the panel into place
         private void optionsButton_MouseClick(object sender, MouseEventArgs e)
         {
+            isPanelOpen = (isPanelOpen) ? false : true; 
             roomPanel.Location = (roomPanel.Location.X < 0) ? (new Point(0, 0)) : (new Point(-265, 0));
+        }
+
+        private void panel_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Either click on panel, or label
+            Control p = (Control)sender;
+            string loc;
+
+            // If the control is not the container panel, set too transparent
+            if (p.Parent != roomPanel)
+            {
+                loc = p.Parent.Tag.ToString();
+            }
+            else
+            {
+                loc = p.Tag.ToString();
+            }
+
+            // Render the info panels
+            LoadLaundryData(loc);
         }
         #endregion
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            LoadLaundryData();
-            gui.CreateRoomTemplate();
-
+            LoadLaundryData("484103");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace UMBC_Laundry
         {
             {"484103", "CHESAPEAKE HALL - ROOM 058A"},
             {"484102", "CHESAPEAKE HALL - ROOM 058B"},
-            {"4841027", "COMMUNITY CENTER-LR" },
+            {"4841027", "COMMUNITY CENTER-LR"},
             {"4841013", "ERICKSON HALL - ROOM 036"},
             {"4841014", "ERICKSON HALL - ROOM 111"},
             {"4841011", "HARBOR HALL - 114 BACK ROOM"},
